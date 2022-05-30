@@ -1,7 +1,13 @@
+import './LoginSuccessful.css'
+
 const LoginSuccesful = () =>{
     
     return(
-        <h4>Login Exitoso.</h4>
+        <main className="totalContainerSuccesfull">
+            <section className="successfulContainer">
+                <h1>Ingreso Exitoso</h1>
+            </section>
+        </main>
     )
 }
 
