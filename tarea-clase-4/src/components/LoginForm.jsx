@@ -1,12 +1,13 @@
 import { useState } from "react"
 import "./LoginForm.css"
 
-const LoginForm = () => {
+
+const LoginForm = ({onSuccess} ) => {
 
     //Hooks - States
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    // const [error, setError] = useState("")
+    const [error, setError] = useState("")
     const [isActiveAlumno, setActiveAlumno] = useState(false);
     const [isActiveProfesor, setActiveProfesor] = useState(false);
 
@@ -17,25 +18,31 @@ const LoginForm = () => {
         } else if (isActiveProfesor) {
             checkProfesor()
         } else {
-            alert("Falló validación botones Alumno Profesor.")
+            alert("Falta activar botón Alumno o Profesor")
         }
     }
 
-    const checkAlumno = () => { // chequeo de validación Alumno
+    const checkAlumno = () => { // chequeo de validación Alumno. Se ejecuta en el botón sign in
         if (email === "nico@nico.com" && password === "1985") {
             window.localStorage.setItem('isLogged', true)
-            alert(localStorage)
-            console.log(localStorage)
+            setError('')
+            onSuccess({onSuccess})
+            return
         } else {
-            alert("Falló checkAlumno")
+            window.localStorage.setItem('isLogged', false)
+            setError("Datos alumno incorrecto")
         }
     }
 
-    const checkProfesor = () => { //Chequeo validación Profesor.
+    const checkProfesor = () => { //Chequeo validación Profesor. Se ejecuta en el botón sign in
         if (email === "agus@agus.com" && password === "2022") {
-            alert('Ingreso exitoso Profesor')
+            window.localStorage.setItem('isLogged', true)
+            setError('')
+            onSuccess({onSuccess})
+            return
         } else {
-            alert("Falló checkProfesor")
+            window.localStorage.setItem('isLogged', false)
+            setError("Datos profesor incorrecto")
         }
     }
       
@@ -75,9 +82,10 @@ const LoginForm = () => {
                     <label htmlFor="email">Email</label>
                     <input className="input" id="email" type="text" value={email} onChange={handleEmailChange}/>
                     <label htmlFor="password">Password</label>
-                    <input className="input" id="password" type="text" value={password} onChange={handlePasswordChange} />
+                    <input className="input" id="password" type="password" value={password} onChange={handlePasswordChange} />
                     <label className="labelForgorPass">forgot password?</label>
                     <button className="buttonLogin" onClick={handleClickSignIn}>Sign In</button>
+                    {error.length > 0 ? (<div className="LoginFormError"> {error} </div>) : null}
                 </div>
 
             </section>

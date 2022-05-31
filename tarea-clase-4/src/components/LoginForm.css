@@ -72,3 +72,11 @@
 .buttonProfesorActivo {
     background-color: #2148C0;
 }
+
+.LoginFormError {
+    width: 100%;
+    color: red;
+    font-weight: 500;
+    font-size: 16px;
+
+}
