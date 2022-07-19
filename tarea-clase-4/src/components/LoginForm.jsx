@@ -26,7 +26,7 @@ const LoginForm = ({onSuccess} ) => {
         if (email === "nico@nico.com" && password === "1985") {
             window.localStorage.setItem('isLogged', true)
             setError('')
-            onSuccess({onSuccess})
+            onSuccess()
             return
         } else {
             window.localStorage.setItem('isLogged', false)
@@ -38,7 +38,7 @@ const LoginForm = ({onSuccess} ) => {
         if (email === "agus@agus.com" && password === "2022") {
             window.localStorage.setItem('isLogged', true)
             setError('')
-            onSuccess({onSuccess})
+            onSuccess()
             return
         } else {
             window.localStorage.setItem('isLogged', false)

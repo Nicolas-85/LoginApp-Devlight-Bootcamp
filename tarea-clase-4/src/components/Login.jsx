@@ -1,11 +1,13 @@
 import LoginForm from "./LoginForm";
 import LoginSuccesful from "./LoginSuccessful";
-import "./Login.css"
 import { useState } from 'react';
+
+
+import "./Login.css"
 
 const Login = ()=> {
 
-    const[isLogged, setIsLogged] = useState(window.localStorage.getItem('isLogged'))
+    const[isLogged, setIsLogged] = useState(window.localStorage.getItem('isLogged')=== true)
 
     const onSuccess = () => {
         setIsLogged('true')
